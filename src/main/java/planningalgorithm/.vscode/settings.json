@@ -1,0 +1,10 @@
+{
+    "maven.view": "hierarchical",
+    "java.dependency.syncWithFolderExplorer": true,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    }
+}
