@@ -8,6 +8,7 @@ PLEASE NOTE:
 - i am not a trained programmer (like i said, i am an mechanical engineer)
 - my native language is german, sadly there are still commits, comments and variablenames in german. Sorry, i will replace them ASAP
 - i used this first project to get in touch with programming and learning java (which i really enjoyed)
+- the main purpose of the project is to learn
 - i would love every kind of feedback
 
 Thank you
