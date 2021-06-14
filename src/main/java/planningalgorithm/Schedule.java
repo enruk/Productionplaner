@@ -23,10 +23,10 @@ import org.jfree.data.general.DatasetUtilities;
 
 public class Schedule extends JFrame {
 
-    public Schedule(int AnzMa, List<Machine> Res) {
+    public Schedule(int AnzMa, List<Machine> Res, List<Operationen> operations) {
 
         final CategoryDataset dataset = createDataset(AnzMa, Res);
-        final JFreeChart chart = createChart(dataset,Res);
+        final JFreeChart chart = createChart(dataset,Res,operations);
         final ChartPanel chartPanel = new ChartPanel(chart);
 
         JFrame frame = new JFrame("Schedule");
@@ -112,7 +112,7 @@ public class Schedule extends JFrame {
         return DatasetUtilities.createCategoryDataset("Operations", "Machine ", data);
     }
       
-    private JFreeChart createChart(final CategoryDataset dataset, List<Machine> Res) {
+    private JFreeChart createChart(final CategoryDataset dataset, List<Machine> Res, List<Operationen> operations) {
       
         final JFreeChart chart = ChartFactory.createStackedBarChart("Production Schedule", "", "Time",dataset, PlotOrientation.HORIZONTAL, false, true, false);
         CategoryPlot plot = chart.getCategoryPlot();
@@ -148,18 +148,19 @@ public class Schedule extends JFrame {
                 if (dataset.getValue(row, col) != null) {
                     Number value = dataset.getValue(row, col);
                     double valuedouble = value.doubleValue();
-                    int OperationsName;
                     if (row%2 == 0 || row == 0) {
                         //Do nothing
                     }
                     else { 
                         int valueint = value.intValue();
                         if ( valueint != 0){
-                            OperationsName = Res.get(col).plannedOperations[PlannedOpsCounter]+1;
+                            int OperationsRow = Res.get(col).plannedOperations[PlannedOpsCounter];
+                            int OperationsNumber = operations.get(OperationsRow).number; 
+                            String opName = String.valueOf(OperationsNumber);
                             PlannedOpsCounter++;
 
                             //  display as decimal integer
-                            String opName = String.valueOf(OperationsName);
+                            
                             // Create the annotation
                             CategoryTextAnnotation cta = new CategoryTextAnnotation(opName,dataset.getColumnKey(col), AddedValues + valuedouble*0.5);
                             Font font = new Font("Courier", Font.BOLD,12);

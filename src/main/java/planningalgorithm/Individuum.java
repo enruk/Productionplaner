@@ -145,6 +145,10 @@ public class Individuum {
         return copy;
     }
 
+    void calculateStartingTimeMatrix(){
+        
+    }
+
 
     
     void correctingAllocation (List<Operationen> operationsList){
@@ -428,8 +432,8 @@ public class Individuum {
                 }
             }
 
-            //Update startingTimeMatrix, bc of new occupation time
 
+            //Update startingTimeMatrix, bc of new occupation time
             // Reset the status in every operation
             for (int i=0;i<nOp;i++){
                 indiProcess.get(i).operationDone = false;
@@ -456,48 +460,48 @@ public class Individuum {
 
                 
                 for (int z=0;z<nOp;z++){
-                    int foundOp = 0;
+                int foundOp = 0;
 
-                    // Search for starting Operation
-                    if (indiProcess.get(z).operationReadyToStart == true){
-                        foundOp = z;
-                        for (int z2=0;z2<nOp;z2++){
-                            if (predecessorWorkingTimes[z2][foundOp] !=0){
-                                startingTimeMatrix[z2][foundOp] = max(startingTimeMatrix[foundOp]) + predecessorWorkingTimes[z2][foundOp]; //t_Op = t_PredecessorStart(from startingTimeMatrix) + t_PredecessorProcess(from predecessorTimes)
-                            }
-                        }
-
-                    // Mark the found operation as done
-                    for (int z3=0;z3<nOp;z3++){
-                        if (indiProcess.get(z3).predecessor[foundOp] == 1){
-                            indiProcess.get(z3).predecessor[foundOp] = 0; // FoundOp is done and is now no longer a predecessor on which other operations have to wait for
+                // Search for starting Operation
+                if (indiProcess.get(z).operationReadyToStart == true){
+                    foundOp = z;
+                    for (int z2=0;z2<nOp;z2++){
+                        if (predecessorWorkingTimes[z2][foundOp] !=0){
+                            startingTimeMatrix[z2][foundOp] = max(startingTimeMatrix[foundOp]) + predecessorWorkingTimes[z2][foundOp]; //t_Op = t_PredecessorStart(from startingTimeMatrix) + t_PredecessorProcess(from predecessorTimes)
                         }
                     }
 
-                    indiProcess.get(foundOp).operationDone = true;
+                // Mark the found operation as done
+                for (int z3=0;z3<nOp;z3++){
+                    if (indiProcess.get(z3).remainingPredecessors[foundOp] == 1){
+                        indiProcess.get(z3).remainingPredecessors[foundOp] = 0; // FoundOp is done and is now no longer a predecessor on which other operations have to wait for
                     }
                 }
 
-                //Calculate new  Starting Operations
-                for (int z=0;z<nOp;z++){
-
-                    // Operation has no remaining Predecessor and wasnt done yet: Ready to Start
-                    if (max(indiProcess.get(z).predecessor)==0 && indiProcess.get(z).operationDone == false){
-                        indiProcess.get(z).operationReadyToStart = true;
-                        indiProcess.get(z).operationNotReady = false;
-                    }
-
-                    // Operation has no remaining Predecessor, but i already done
-                    if (max(indiProcess.get(z).predecessor)==0 && indiProcess.get(z).operationDone == true){
-                        indiProcess.get(z).operationReadyToStart = false;
-                        indiProcess.get(z).operationNotReady = false;
-                    }
-
-                    // Operation still has remaining Predecessors
-                    if (max(indiProcess.get(z).predecessor)!=0){
-                        indiProcess.get(z).operationNotReady = true;
-                    }
+                indiProcess.get(foundOp).operationDone = true;
                 }
+            }
+
+            //Calculate new  Starting Operations
+            for (int z=0;z<nOp;z++){
+
+                // Operation has no remaining Predecessor and wasnt done yet: Ready to Start
+                if (max(indiProcess.get(z).remainingPredecessors)==0 && indiProcess.get(z).operationDone == false){
+                    indiProcess.get(z).operationReadyToStart = true;
+                    indiProcess.get(z).operationNotReady = false;
+                }
+
+                // Operation has no remaining Predecessor, but i already done
+                if (max(indiProcess.get(z).remainingPredecessors)==0 && indiProcess.get(z).operationDone == true){
+                    indiProcess.get(z).operationReadyToStart = false;
+                    indiProcess.get(z).operationNotReady = false;
+                }
+ 
+                // Operation still has remaining Predecessors
+                if (max(indiProcess.get(z).remainingPredecessors)!=0){
+                    indiProcess.get(z).operationNotReady = true;
+                }
+            }
 
 
                 // Get termination condition

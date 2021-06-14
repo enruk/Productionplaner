@@ -1,3 +1,5 @@
+
+
 # productionplanning
  
 Genetic algorithm with a giffler thompson algorithm for FJSSP
@@ -17,6 +19,8 @@ Thank you
 
 
 Some notes to the structure of the programm:
+- You can find the executable jar file "productionplanning-1.0-jar-with-dependencies" in the target folder
+
 - i used a Genetic Algorithm
   - Mutation: One-Bit-Mutation / Swap Mutation (for Allocation) and Mixed-Mutation / Swap-Mutation (for Sequence)
   - Rekombination: N-Point_Recombination (Allocation) and Order-Recombination (Sequence)
@@ -28,13 +32,14 @@ Some notes to the structure of the programm:
   
   
  Some notes to the excel sheet you can find in the src foulder (src/test/java/planningalgorithm)
+- Because a picture says more than a thousand words, please see the ExplanationExcelSheet.png 
   - the programm is made for k jobs with n operations
-  - operations are connected with their predecessor operaion to the jobs
-  - Every Operation needs a number
-  - Programm is made for n operations and m machines (only practical limit)
+  - operations are connected with their predecessor operation to the jobs
+  - Every Operation needs a number, sorted from top to bottom
+  - Programm is made for j jobs (j>0) each with n operations (n>0), executed on m machines (m>1)
   - predecessors must be given for every operation (except of cource for the starting operations)
   - starting operations get a "0"
-  - multiple jobs can be given, every operation only need its predecessors
+  - only permissible jobs are allowed (Please see the "Example for Permissible Assambly Priority Graphes.png")
   - if machine cant do an operation just put in a "0"
   
   

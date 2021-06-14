@@ -133,11 +133,8 @@ public class ProcessList {
                         CurrentOp.timesProductionOnMachines[MaIterator] = ZeitMaschine;
                         CurrentOp.availableMachines[MaIterator] = 1;
                     }
-
                 }
-                
             }
-
         }
         excelmappe.close();
 
@@ -148,9 +145,11 @@ public class ProcessList {
         Präzedenzmatrix = new int[nOp][nOp];
         for (int i=0;i<nOp;i++){
             for (int j=0;j<processInformation.get(i).predecessor.length;j++){
-            int VorProzess = processInformation.get(i).predecessor[j];
-                if (VorProzess != 0){
-                Präzedenzmatrix[i][VorProzess-1] = 1;
+            int VorProzess = processInformation.get(i).predecessor[j];          // Get the predessor number
+                for (int k=0;k<nOp;k++){
+                    if (processInformation.get(k).number == VorProzess && VorProzess != 0){    
+                        Präzedenzmatrix[i][k] = 1;// finde the operation with this number
+                    } 
                 }
             } 
         }

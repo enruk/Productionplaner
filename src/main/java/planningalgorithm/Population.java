@@ -196,7 +196,7 @@ public class Population {
 
             @Override 
             public void run(){
-                Schedule iniSchedule = new Schedule(nMa,Individuen.get(0).indiMachines); 
+                Schedule iniSchedule = new Schedule(nMa,Individuen.get(0).indiMachines,readProcess); 
                 iniSchedule.toFront();
                 iniSchedule.repaint();
             }
