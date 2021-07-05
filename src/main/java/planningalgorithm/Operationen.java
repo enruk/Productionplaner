@@ -3,9 +3,8 @@ package planningalgorithm;
 public class Operationen {
     int number;
     String opName;
-    int[] predecessor;
-    //ArrayList<Integer> predecessor;
-    int[] remainingPredecessors;            // Operation that has to be done before this operation
+    int[] predecessor;                      // Read Only
+    int[] remainingPredecessors;            // Operation that has to be done before this operation, Read and edit
     int[] availableMachines;                // Machines i that can execute this operation
     int[] timesProductionOnMachines;        // Productiontime for this operation on every machine i
     int timeStart;                          // Starting time of this operation
