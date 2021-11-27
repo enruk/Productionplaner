@@ -1,23 +1,29 @@
 
 
 # productionplanning
- 
-Genetic algorithm with a giffler thompson algorithm for FJSSP
+<br>
 
-Hello, my name is Henrik. I am an mechanical engineer who enjoys to code in his freetime. This my approch for the FJSSP.
+Genetic algorithm with a giffler thompson algorithm to solve the well known JSSP / FJSSP
+<br>
+
+Hello, my name is Henrik. I am a mechanical engineer who enjoys to code in his freetime. This my approch for the (F)JSSP.
+<br>
 
 PLEASE NOTE: 
-- this is my first programming project (please have mercy with me :/)
+- this is my first programming project
 - i am not a trained programmer (like i said, i am a mechanical engineer)
 - my native language is german, sadly there are still commits, comments and variablenames in german. Sorry, i will replace them ASAP
 - i used this first project to get in touch with programming and learning java (which i really enjoy / enjoyed)
 - the goal of this project was to learn and not to create a perfect program
 - i would love every kind of feedback
-- complete history of the programm is i an my other repo called "planningalgorithm" (i am too dumb for github)
+- complete history of the programm is i an my other repo called "planningalgorithm"
+<br>
 
-Thank you
+Thank you!
 
-
+<br>
+<br>
+<br>
 
 
 1. How to use the tool:
@@ -39,11 +45,15 @@ Thank you
   - Rekombination: N-Point_Recombination (Allocation) and Order-Recombination (Sequence)
   - Selektion: Q-Tournament Selection and a Plus-Selection (Children and %Parents go to next Generation)
   - Fitness: Productiontime based on ranks
-  
+<br>
+
 - i used a list planning algorithm (Giffler-Thompson-Algorithm) to get only permitted schedules
   - for reference: Bierwirth, Christian ; Mattfeld, Dirk C.: Production Scheduling and Rescheduling with Genetic Algorithms. In: Evolutionary Computation 7 (1999), Nr. 1, S. 1–17.
-  
-  
+
+
+<br>  
+<br>
+<br>
 
 
  3. Some notes to the excel sheet templete and the example (src/test/java/planningalgorithm)
@@ -54,11 +64,15 @@ Thank you
   - every Operation needs a number, but they dont need to be sorted
   - you can define multiple jobs, each with multiple operations, while the jobs dont have to be connected
 
+<br>
+
 - Predecessors:
   - predecessors must be given for every operation (except of cource for the starting operations)
   - assign a predecessor to an operation by entering the number of the predecessor in the predecessor column
   - if an operaion has multiple predecessors, separate them with a ";"
   - starting operations, so an operations that has no predecessor, get a "0" in the predecessor column
+
+<br>
 
 - Machines / Ressource
   - every machine you want to use must be defined in the excel sheet in a machine column
