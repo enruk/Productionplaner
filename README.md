@@ -5,22 +5,6 @@
 
 Genetic algorithm with a giffler thompson algorithm to solve the well known JSSP / FJSSP
 <br>
-
-Hello, my name is Henrik. I am a mechanical engineer who enjoys to code in his freetime. This my approch for the (F)JSSP.
-<br>
-
-PLEASE NOTE: 
-- this is my first programming project
-- i am not a trained programmer (like i said, i am a mechanical engineer)
-- my native language is german, sadly there are still commits, comments and variablenames in german. Sorry, i will replace them ASAP
-- i used this first project to get in touch with programming and learning java (which i really enjoy / enjoyed)
-- the goal of this project was to learn and not to create a perfect program
-- i would love every kind of feedback
-- complete history of the programm is i an my other repo called "planningalgorithm"
-<br>
-
-Thank you!
-
 <br>
 <br>
 <br>
