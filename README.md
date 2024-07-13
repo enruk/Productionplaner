@@ -5,8 +5,6 @@
 
 Genetic algorithm with a giffler thompson algorithm to solve the well known JSSP / FJSSP
 
-Thank you
-
 <br>
 <br>
 <br>
